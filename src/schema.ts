@@ -1,0 +1,12 @@
+import { z } from 'zod';
+export const designSchema=z.object({
+ schemaVersion:z.literal('watchfaces.noeba/v1'), target:z.literal('xiaomi-smart-band-10/o66'), name:z.string().min(1).max(40),
+ colors:z.object({background:z.string().regex(/^#[0-9a-fA-F]{6}$/),primary:z.string().regex(/^#[0-9a-fA-F]{6}$/),secondary:z.string().regex(/^#[0-9a-fA-F]{6}$/)}),
+ clock:z.object({size:z.number().int().min(42).max(110),weight:z.enum(['500','600','700','800','900']),y:z.number().int().min(20).max(330)}),
+ widgets:z.object({date:z.boolean(),steps:z.boolean(),heartRate:z.boolean(),battery:z.boolean()}),
+ aod:z.boolean(), advanced:z.object({tapZones:z.boolean().default(false),scripts:z.boolean().default(false),editableStyles:z.boolean().default(false)}).default({tapZones:false,scripts:false,editableStyles:false})
+});
+export type Design=z.infer<typeof designSchema>;
+export const defaultDesign:Design={schemaVersion:'watchfaces.noeba/v1',target:'xiaomi-smart-band-10/o66',name:'Noeba One',colors:{background:'#05070a',primary:'#f4f0e8',secondary:'#62d6bd'},clock:{size:82,weight:'800',y:112},widgets:{date:true,steps:true,heartRate:true,battery:true},aod:true,advanced:{tapZones:false,scripts:false,editableStyles:false}};
+export const hasAdvanced=(d:Design)=>Object.values(d.advanced).some(Boolean);
+export const jsonSchema={"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://watchfaces.noeba.cat/schema/v1.json",title:"Watchfaces Noeba design v1",type:"object",required:["schemaVersion","target","name","colors","clock","widgets","aod"],properties:{schemaVersion:{const:"watchfaces.noeba/v1"},target:{const:"xiaomi-smart-band-10/o66"},name:{type:"string",minLength:1,maxLength:40},colors:{type:"object",required:["background","primary","secondary"],properties:{background:{$ref:"#/$defs/color"},primary:{$ref:"#/$defs/color"},secondary:{$ref:"#/$defs/color"}}},clock:{type:"object",required:["size","weight","y"],properties:{size:{type:"integer",minimum:42,maximum:110},weight:{enum:["500","600","700","800","900"]},y:{type:"integer",minimum:20,maximum:330}}},widgets:{type:"object",required:["date","steps","heartRate","battery"],properties:{date:{type:"boolean"},steps:{type:"boolean"},heartRate:{type:"boolean"},battery:{type:"boolean"}}},aod:{type:"boolean"},advanced:{type:"object",properties:{tapZones:{type:"boolean"},scripts:{type:"boolean"},editableStyles:{type:"boolean"}}}},$defs:{color:{type:"string",pattern:"^#[0-9a-fA-F]{6}$"}}};
