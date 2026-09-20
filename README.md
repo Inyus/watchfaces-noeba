@@ -1,8 +1,5 @@
 # Watchfaces Noeba
 
-<<<<<<< HEAD
-Open-source browser tools for Xiaomi Smart Band 10 watchfaces.
-=======
 A browser-only, experimental watchface designer and compiler for the Xiaomi Smart Band 10 (`o66`, 212×520).
 
 ## What it does
@@ -28,12 +25,10 @@ The native compiler covers the verified/basic Band 10 subset: images, raster dig
 
 The Xiaomi package format is community reverse-engineered, not an official specification. Every output should be tested on the target band and firmware.
 
-## Credits and license
-
-MIT licensed. The binary package structure, RLE codecs, and format research are adapted from [`utsabfdahal/band10-toolkit`](https://github.com/utsabfdahal/band10-toolkit), also MIT licensed. Its original license is preserved in [`LICENSE.upstream`](LICENSE.upstream).
->>>>>>> 51ae3d9 (feat: launch browser-only Smart Band 10 watchface compiler)
-
-
 ## Live deployment
 
 The public app is deployed at [watchfaces.noeba.cat](https://watchfaces.noeba.cat/). Cloudflare Workers Builds deploys `main` after CI-tested changes are merged.
+
+## Credits and license
+
+MIT licensed. The binary package structure, RLE codecs, and format research are adapted from [`utsabfdahal/band10-toolkit`](https://github.com/utsabfdahal/band10-toolkit), also MIT licensed. Its original license is preserved in [`LICENSE.upstream`](LICENSE.upstream).
