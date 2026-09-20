@@ -111,6 +111,38 @@
           "type": "boolean"
         }
       }
+    },
+    "imageSlots": {
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "role",
+          "description"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "enum": [
+              "background",
+              "artwork"
+            ]
+          },
+          "role": {
+            "enum": [
+              "background",
+              "foreground"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          }
+        }
+      }
     }
   },
   "$defs": {
