@@ -32,3 +32,8 @@ The Xiaomi package format is community reverse-engineered, not an official speci
 
 MIT licensed. The binary package structure, RLE codecs, and format research are adapted from [`utsabfdahal/band10-toolkit`](https://github.com/utsabfdahal/band10-toolkit), also MIT licensed. Its original license is preserved in [`LICENSE.upstream`](LICENSE.upstream).
 >>>>>>> 51ae3d9 (feat: launch browser-only Smart Band 10 watchface compiler)
+
+
+## Live deployment
+
+The public app is deployed at [watchfaces.noeba.cat](https://watchfaces.noeba.cat/). Cloudflare Workers Builds deploys `main` after CI-tested changes are merged.
